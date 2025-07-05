@@ -9,17 +9,16 @@ import './App.css'
 
 function App() {
 const [Colors,setColor] = useState({
-  1:[15,12,66],
-  2:[15,53,200],
-  3:[212,211,200],
-  4:[11,111,211],
+  1:[0,0,0],
+  2:[0,0,0],
+  3:[0,0,0],
+  4:[0,0,0],
   5:[0,0,0],
 })
 
 
-
 function Generate(){
-    var url = "http://colormind.io/api/";
+    var url = "https://corsproxy.io/?http://colormind.io/api/";
 var data = {
 	model : "default",
 	input : ["N","N","N","N","N"]
@@ -46,9 +45,13 @@ useEffect(() => {
     console.log(e.code);
     Generate();
   };
+  Generate()
   window.addEventListener("keydown", handleKeyDown);
   return () => window.removeEventListener("keydown", handleKeyDown);
 }, []);
+
+
+
 
 const divs = Object.entries(Colors).map(([key, value]) => {
  const hex = "#" + [value[0], value[1], value[2]]
@@ -61,6 +64,7 @@ const divs = Object.entries(Colors).map(([key, value]) => {
     </div>
   );
 });
+
   return (
     <>
       <h1>Color Palette Generator</h1>
